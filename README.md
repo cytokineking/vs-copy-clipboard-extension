@@ -1,4 +1,4 @@
-# Copy Contents to Clipboard
+# VS Copy Clipboard Extension
 
 A Visual Studio Code extension that allows users to right-click on selected files or folders in the file explorer and copy their contents directly to the clipboard.
 
@@ -21,6 +21,15 @@ A Visual Studio Code extension that allows users to right-click on selected file
   - Displays a confirmation message upon successful copy
 
 ![Usage Animation](images/usage.gif)
+
+### From .vsix File
+1. Download the `.vsix` file from the [GitHub releases page](https://github.com/cytokineking/vs-copy-clipboard-extension/releases)
+2. Open VS Code
+3. Go to Extensions (Ctrl+Shift+X or Cmd+Shift+X)
+4. Click on the "..." menu (top-right of the Extensions view)
+5. Select "Install from VSIX..."
+6. Navigate to and select the downloaded `.vsix` file
+7. Restart VS Code if prompted
 
 ## Usage
 
@@ -80,18 +89,15 @@ This extension doesn't add any VS Code settings.
 
 ## Release Notes
 
-### 1.1.0
-
-- Added separate commands for files and folders
-- Added option to copy only directory structure
-- Added smart filtering of common directories like node_modules, __pycache__, etc.
-- Improved directory structure visualization
-
 ### 1.0.0
 
 - Initial release
 - Basic file and folder copying functionality
 - Binary file detection
+- Separate commands for files and folders
+- Option to copy only directory structure
+- Smart filtering of common directories like node_modules, __pycache__, etc.
+- Directory structure visualization
 
 ## Development
 
@@ -104,8 +110,16 @@ npm install
 # Compile the extension
 npm run compile
 
-# Package the extension
-vscode-dev:package
+# Package the extension into a .vsix file
+npx vsce package
+```
+
+### Installing the Development Version
+
+After packaging the extension, you can install it directly from the .vsix file:
+
+```bash
+code --install-extension vs-copy-clipboard-extension-1.0.0.vsix
 ```
 
 ### Testing the Extension
