@@ -28,9 +28,9 @@ A Visual Studio Code (& Cursor & Windsurf) extension that allows users to right-
   - Skips binary files automatically
   - Displays a confirmation message upon successful copy
 
-![Usage Animation](images/usage.gif)
 
-### From .vsix File
+
+### Installation
 VSCode and Windsurf:
 1. Download the `.vsix` file from the [GitHub releases page](https://github.com/cytokineking/vs-copy-clipboard-extension/releases)
 2. Open VS Code/Windsurf
