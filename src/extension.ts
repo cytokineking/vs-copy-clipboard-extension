@@ -4,10 +4,17 @@ import * as path from 'path';
 
 export function activate(context: vscode.ExtensionContext) {
   // Command for copying folder contents with directory structure
-  const copyFolderCommand = vscode.commands.registerCommand('copy-contents-to-clipboard.copyFolderContents', async (uri?: vscode.Uri) => {
+  const copyFolderCommand = vscode.commands.registerCommand('vs-copy-contents-to-clipboard.copyFolderContents', async (uri?: vscode.Uri) => {
+    // If no URI is provided, we might be clicking on the workspace root
     if (!uri) {
-      vscode.window.showErrorMessage('No folder selected.');
-      return;
+      // Get the workspace folder
+      const workspaceFolders = vscode.workspace.workspaceFolders;
+      if (workspaceFolders && workspaceFolders.length > 0) {
+        uri = workspaceFolders[0].uri;
+      } else {
+        vscode.window.showErrorMessage('No folder selected and no workspace folder available.');
+        return;
+      }
     }
 
     try {
@@ -38,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   // Command for copying a single file
-  const copyFileCommand = vscode.commands.registerCommand('copy-contents-to-clipboard.copyFileContents', async (uri?: vscode.Uri) => {
+  const copyFileCommand = vscode.commands.registerCommand('vs-copy-contents-to-clipboard.copyFileContents', async (uri?: vscode.Uri) => {
     if (!uri) {
       vscode.window.showErrorMessage('No file selected.');
       return;
@@ -65,31 +72,18 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  // Register the old command for backward compatibility
-  const oldCommand = vscode.commands.registerCommand('copy-contents-to-clipboard.copyContents', async (uri?: vscode.Uri) => {
-    if (!uri) {
-      vscode.window.showErrorMessage('No item selected.');
-      return;
-    }
-    
-    try {
-      const stats = await fs.promises.stat(uri.fsPath);
-      if (stats.isDirectory()) {
-        await vscode.commands.executeCommand('copy-contents-to-clipboard.copyFolderContents', uri);
-      } else {
-        await vscode.commands.executeCommand('copy-contents-to-clipboard.copyFileContents', uri);
-      }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      vscode.window.showErrorMessage(`Error copying contents to clipboard: ${errorMessage}`);
-    }
-  });
-
   // New command for copying only directory structure
-  const copyStructureCommand = vscode.commands.registerCommand('copy-contents-to-clipboard.copyDirectoryStructure', async (uri?: vscode.Uri) => {
+  const copyStructureCommand = vscode.commands.registerCommand('vs-copy-contents-to-clipboard.copyDirectoryStructure', async (uri?: vscode.Uri) => {
+    // If no URI is provided, we might be clicking on the workspace root
     if (!uri) {
-      vscode.window.showErrorMessage('No folder selected.');
-      return;
+      // Get the workspace folder
+      const workspaceFolders = vscode.workspace.workspaceFolders;
+      if (workspaceFolders && workspaceFolders.length > 0) {
+        uri = workspaceFolders[0].uri;
+      } else {
+        vscode.window.showErrorMessage('No folder selected and no workspace folder available.');
+        return;
+      }
     }
 
     try {
@@ -113,7 +107,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  context.subscriptions.push(copyFolderCommand, copyFileCommand, oldCommand, copyStructureCommand);
+  context.subscriptions.push(copyFolderCommand, copyFileCommand, copyStructureCommand);
 }
 
 async function processSelectedItems(items: vscode.Uri[]): Promise<string> {

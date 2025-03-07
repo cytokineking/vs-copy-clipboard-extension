@@ -1,9 +1,9 @@
 {
-  "name": "copy-contents-to-clipboard",
-  "displayName": "Copy Contents to Clipboard",
-  "description": "Copy file and folder contents to clipboard while preserving structure",
-  "version": "1.0.0",
-  "publisher": "yourPublisherName",
+  "name": "vs-copy-contents-to-clipboard",
+  "displayName": "VS Copy Contents to Clipboard",
+  "description": "Copy file and folder contents to clipboard with diagram of directory structure",
+  "version": "1.1.0",
+  "publisher": "cytokineking",
   "engines": {
     "vscode": "^1.60.0"
   },
@@ -15,38 +15,34 @@
   "contributes": {
     "commands": [
       {
-        "command": "copy-contents-to-clipboard.copyContents",
-        "title": "Copy Contents to Clipboard"
-      },
-      {
-        "command": "copy-contents-to-clipboard.copyFolderContents",
+        "command": "vs-copy-contents-to-clipboard.copyFolderContents",
         "title": "Copy Folder Contents and Structure to Clipboard"
       },
       {
-        "command": "copy-contents-to-clipboard.copyFileContents",
+        "command": "vs-copy-contents-to-clipboard.copyFileContents",
         "title": "Copy File to Clipboard"
       },
       {
-        "command": "copy-contents-to-clipboard.copyDirectoryStructure",
+        "command": "vs-copy-contents-to-clipboard.copyDirectoryStructure",
         "title": "Copy Directory Structure Only to Clipboard"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "copy-contents-to-clipboard.copyFolderContents",
-          "when": "explorerResourceIsFolder",
-          "group": "1_modification"
-        },
-        {
-          "command": "copy-contents-to-clipboard.copyDirectoryStructure",
-          "when": "explorerResourceIsFolder",
-          "group": "1_modification"
-        },
-        {
-          "command": "copy-contents-to-clipboard.copyFileContents",
+          "command": "vs-copy-contents-to-clipboard.copyFileContents",
           "when": "!explorerResourceIsFolder",
-          "group": "1_modification"
+          "group": "0_copyClipboard"
+        },
+        {
+          "command": "vs-copy-contents-to-clipboard.copyFolderContents",
+          "when": "explorerResourceIsFolder || explorerResourceIsRoot",
+          "group": "0_copyClipboard"
+        },
+        {
+          "command": "vs-copy-contents-to-clipboard.copyDirectoryStructure",
+          "when": "explorerResourceIsFolder || explorerResourceIsRoot",
+          "group": "0_copyClipboard"
         }
       ]
     }

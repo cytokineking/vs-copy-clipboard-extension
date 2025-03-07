@@ -14,6 +14,10 @@ A Visual Studio Code extension that allows users to right-click on selected file
   - Preserves hierarchy in an easy-to-read format
   - Automatically excludes common directories like `node_modules`, `__pycache__`, `.git`, etc.
 
+- **Project Root Operations:**
+  - Right-click on the project root area to copy the entire project structure and/or contents
+  - Access the same folder commands directly from the workspace root
+
 - **General Features:**
   - Recursively processes folders
   - Separates files with clear delimiters
@@ -43,6 +47,13 @@ A Visual Studio Code extension that allows users to right-click on selected file
 2. Choose one of two options:
    - "Copy Folder Contents and Structure to Clipboard" - copies both directory structure and all file contents
    - "Copy Directory Structure Only to Clipboard" - copies just the directory tree without file contents
+3. Paste anywhere you need the contents
+
+### For Project Root:
+1. Right-click in the empty area of the Explorer view (not on any specific file or folder)
+2. Choose one of two options:
+   - "Copy Folder Contents and Structure to Clipboard" - copies the entire project's structure and contents
+   - "Copy Directory Structure Only to Clipboard" - copies just the project's directory tree
 3. Paste anywhere you need the contents
 
 ## Format
@@ -88,6 +99,11 @@ This extension doesn't add any VS Code settings.
 - Some encoding issues might occur with non-UTF8 text files
 
 ## Release Notes
+
+### 1.1.0
+
+- Added ability to access folder commands by right-clicking directly on the project root in the Explorer view
+- Improved handling of workspace root folders
 
 ### 1.0.0
 
