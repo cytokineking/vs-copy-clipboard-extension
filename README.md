@@ -3,6 +3,8 @@
 A Visual Studio Code (& Cursor & Windsurf) extension that allows users to right-click on selected files or folders in the file explorer and copy their contents directly to the clipboard. 
 <br> <br>
 <img width="396" alt="Screenshot 2025-03-06 at 11 46 58 PM" src="https://github.com/user-attachments/assets/3b797073-9cb4-4979-8509-70e75cf44f0f" />
+<img width="275" alt="Screenshot 2025-03-06 at 11 49 29 PM" src="https://github.com/user-attachments/assets/5c20976c-e3d1-4975-8d48-d285635c26c4" />
+
 <br><br>
 ## Features
 
