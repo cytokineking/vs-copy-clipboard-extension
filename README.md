@@ -1,7 +1,9 @@
 # VS Copy Clipboard Extension
 
-A Visual Studio Code extension that allows users to right-click on selected files or folders in the file explorer and copy their contents directly to the clipboard.
-
+A Visual Studio Code (& Cursor & Windsurf) extension that allows users to right-click on selected files or folders in the file explorer and copy their contents directly to the clipboard. 
+<br> <br>
+<img width="396" alt="Screenshot 2025-03-06 at 11 46 58 PM" src="https://github.com/user-attachments/assets/3b797073-9cb4-4979-8509-70e75cf44f0f" />
+<br><br>
 ## Features
 
 - **File Operations:**
@@ -27,13 +29,21 @@ A Visual Studio Code extension that allows users to right-click on selected file
 ![Usage Animation](images/usage.gif)
 
 ### From .vsix File
+VSCode and Windsurf:
 1. Download the `.vsix` file from the [GitHub releases page](https://github.com/cytokineking/vs-copy-clipboard-extension/releases)
-2. Open VS Code
+2. Open VS Code/Windsurf
 3. Go to Extensions (Ctrl+Shift+X or Cmd+Shift+X)
 4. Click on the "..." menu (top-right of the Extensions view)
 5. Select "Install from VSIX..."
 6. Navigate to and select the downloaded `.vsix` file
-7. Restart VS Code if prompted
+7. Restart VS Code/Windsurf if prompted
+
+Cursor:
+1. Download the `.vsix` file from the [GitHub releases page](https://github.com/cytokineking/vs-copy-clipboard-extension/releases)
+2. Open Cursor
+3. Go to Extensions (Ctrl+Shift+X or Cmd+Shift+X)
+4. Drag and drop the downloaded `.vsix` file into the extensions explorer
+5. Restart Cursor if prompted
 
 ## Usage
 
