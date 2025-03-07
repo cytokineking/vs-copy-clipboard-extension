@@ -1,0 +1,119 @@
+# Copy Contents to Clipboard
+
+A Visual Studio Code extension that allows users to right-click on selected files or folders in the file explorer and copy their contents directly to the clipboard.
+
+## Features
+
+- **File Operations:**
+  - Copy single file contents to clipboard with a right-click
+  - Clear file headers with paths
+
+- **Folder Operations:**
+  - Copy entire folder contents with directory structure
+  - Copy just the directory structure without file contents
+  - Preserves hierarchy in an easy-to-read format
+  - Automatically excludes common directories like `node_modules`, `__pycache__`, `.git`, etc.
+
+- **General Features:**
+  - Recursively processes folders
+  - Separates files with clear delimiters
+  - Skips binary files automatically
+  - Displays a confirmation message upon successful copy
+
+![Usage Animation](images/usage.gif)
+
+## Usage
+
+### For Files:
+1. Right-click on a file in the Explorer view
+2. Select "Copy File to Clipboard"
+3. The file contents will be copied to your clipboard with proper formatting
+
+### For Folders:
+1. Right-click on a folder in the Explorer view
+2. Choose one of two options:
+   - "Copy Folder Contents and Structure to Clipboard" - copies both directory structure and all file contents
+   - "Copy Directory Structure Only to Clipboard" - copies just the directory tree without file contents
+3. Paste anywhere you need the contents
+
+## Format
+
+The copied text will be formatted as follows:
+
+### For Files:
+- Files will have a header with the file path: `# FILE: /path/to/file.js`
+- File contents follow the header
+
+### For Folders with Contents:
+- First displays a tree-like directory structure
+- Followed by the actual file contents
+- Files have a header with the file path: `# FILE: /path/to/file.js`
+- Directories have a header: `# DIRECTORY: folder-name`
+- Files are separated by `========` delimiters
+- Files within directories are separated by `--------` delimiters
+- Binary files are noted but their contents are not copied
+
+### For Directory Structure Only:
+- Displays a tree-like representation of the folder structure
+- Uses ASCII characters to show the hierarchy
+
+## Excluded Directories
+
+The extension automatically excludes certain directories and files that are typically not needed when sharing code with an LLM, including:
+
+- `node_modules`, `__pycache__`, `.git`
+- `venv`, `.venv`, `.env`, `env`
+- Build directories: `build`, `dist`, `out`, `target`, etc.
+- Cache directories: `.cache`, `.parcel-cache`, `.pytest_cache`, etc.
+- IDE folders: `.vscode`, `.idea`, `.vs`
+- System files: `.DS_Store`, `Thumbs.db`
+- And many more
+
+## Extension Settings
+
+This extension doesn't add any VS Code settings.
+
+## Known Issues
+
+- Very large files or directories might cause performance issues
+- Some encoding issues might occur with non-UTF8 text files
+
+## Release Notes
+
+### 1.1.0
+
+- Added separate commands for files and folders
+- Added option to copy only directory structure
+- Added smart filtering of common directories like node_modules, __pycache__, etc.
+- Improved directory structure visualization
+
+### 1.0.0
+
+- Initial release
+- Basic file and folder copying functionality
+- Binary file detection
+
+## Development
+
+### Building the Extension
+
+```bash
+# Install dependencies
+npm install
+
+# Compile the extension
+npm run compile
+
+# Package the extension
+vscode-dev:package
+```
+
+### Testing the Extension
+
+1. Open this directory in VS Code
+2. Press F5 to launch a new window with the extension loaded
+3. Right-click on files/folders in the explorer to test the functionality
+
+## License
+
+[MIT](LICENSE)

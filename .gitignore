@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
+
+# Build output
+out/
+dist/
+*.vsix
+
+# VS Code specific files
+.vscode-test/
+.vscode/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Coverage directory used by tools like istanbul
+coverage
